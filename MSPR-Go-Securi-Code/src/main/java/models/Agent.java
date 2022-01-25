@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.lang3.SystemUtils;
 
 /**
  * This class represent an agent by his name and his items.
@@ -182,7 +183,11 @@ public class Agent{
     public void generateAgentFile(Map<String, String> equipmentList){
         String templateFile="";
         try {
-            templateFile = Files.readString(Paths.get("src/main/java/models/template_agent_file.html"));
+            if (SystemUtils.OS_NAME.startsWith("Windows")){
+                templateFile = Files.readString(Paths.get("MSPR-Go-Securi-Code/src/main/java/models/template_agent_file.html"));
+            }else {
+                templateFile = Files.readString(Paths.get("src/main/java/models/template_agent_file.html"));
+            }
         }catch (IOException e){
             e.printStackTrace();
         }
