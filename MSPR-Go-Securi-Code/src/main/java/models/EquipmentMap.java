@@ -20,10 +20,8 @@ public class EquipmentMap {
         return map;
     }
 
-    public void printaquimentmap() throws IOException {
-        HashMap<String, String> maptoprint = this.equimentMap();
-        maptoprint.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        });
+    public void printEquimentMap() throws IOException {
+        HashMap<String, String> maptoprint = equimentMap();
+        maptoprint.forEach((key, value) -> System.out.println(key + " " + value));
     }
 }
