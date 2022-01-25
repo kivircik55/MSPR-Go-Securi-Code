@@ -2,6 +2,7 @@
 *.class
 *.idea
 target/*
+.DS_Store
 
 # Log file
 *.log
