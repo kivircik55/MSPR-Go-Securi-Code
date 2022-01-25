@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <meta charset="utf-8">
+        <title>Fiche agent</title>
+    </head>
+    <body>
+        <h1>$agentName</h1>
+        <button class="button"><a href="index.html">Retour</a></button>
+        <img class="ID" width="300" height="200" src="$agentLogin.jpg">
+        <div class="liste">
+            <h3>Equipements</h3>
+                <ul>
+                    $agentItems
+                </ul>
+        </div>
+    </body>
+</html>
+
+<style>
+h1{
+    margin-left: 10px;
+    
+}
+.button {
+    background-color: #659224;
+    font-weight: bold;
+    border:#ffff;
+    color: #ffff;
+    padding: 10px 20px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 1ch;
+    cursor: pointer;
+}
+.button:hover {
+  background-color: #ffff;
+  color: #659224;
+}
+a, a:visited, a:hover, a:active {
+  color: inherit;
+  text-decoration: none;
+ 
+  
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(48, 48, 48);
+    color: rgb(255, 255, 255);
+    
+}
+li{
+    background-color: #659224;
+    box-shadow: 2px 2px 2px 1px #44444454;
+    margin: 10px;
+    width: 250px;
+    list-style-type: none;
+    text-align:end;
+}
+.chk{
+    margin-left: 20px;
+    margin-right: 20px;   
+}
+
+.liste{
+    background-color: #379EC1;
+    border-radius: 3ch;
+    box-shadow: 2px 2px 2px 1px #379fc150;
+    text-align:center;
+    margin-top: 200px;
+    width: 350px;
+    padding: auto;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+ul{
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+.ID{
+    border-radius: 1ch;
+    position:absolute;
+   top:0;
+   right:0;
+   /* margin-top: 10px;
+   margin-right: 20px;
+   margin-left: 500px; */
+   width: 50%;
+  max-width: 400px;
+  height: auto;
+}
+
+
+
+</style>
