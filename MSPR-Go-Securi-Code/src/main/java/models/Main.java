@@ -1,5 +1,6 @@
 package models;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,5 +22,12 @@ public class Main{
 
         System.out.println(agent.toString());
         agent.generateAgentFile(map);
+
+        EquipmentMap e = new EquipmentMap();
+        try {
+            e.printEquimentMap();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

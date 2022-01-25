@@ -183,11 +183,7 @@ public class Agent{
     public void generateAgentFile(Map<String, String> equipmentList){
         String templateFile="";
         try {
-            if (SystemUtils.OS_NAME.startsWith("Windows")){
-                templateFile = Files.readString(Paths.get("MSPR-Go-Securi-Code/src/main/java/models/template_agent_file.html"));
-            }else {
                 templateFile = Files.readString(Paths.get("src/main/java/models/template_agent_file.html"));
-            }
         }catch (IOException e){
             e.printStackTrace();
         }

@@ -6,7 +6,7 @@ import java.nio.file.Path;
 
 public class EquipmentMap {
     public static HashMap<String, String> equipmentMap() throws IOException {
-        Path fileName = Path.of("../../../../../../MSPR-Go-Securi/list.txt" );
+        Path fileName = Path.of("C:/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/list.txt" );
         String[] fileString = Files.readString(fileName).split("\\r?\\n");
         HashMap<String, String> map = new HashMap<>();
         for (String s : fileString) {
