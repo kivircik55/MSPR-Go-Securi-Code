@@ -3,6 +3,9 @@
 *.idea
 target/*
 .DS_Store
+*.iml
+*.html
+build/*
 
 # Log file
 *.log
