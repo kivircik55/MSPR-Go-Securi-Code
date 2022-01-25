@@ -1,12 +1,13 @@
 package com.example.mspr_go_securi_code_android;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * This class represent an agent by his name and his items.
  */
 
-public class Agent{
+public class Agent implements Serializable {
     private String lastName;
     private String firstName;
     private String role;
