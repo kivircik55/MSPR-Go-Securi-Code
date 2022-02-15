@@ -12,7 +12,7 @@ public class AgentTest {
 
     @Test
     void addItemToAgent() {
-        Agent agent = new Agent("test", "test", "test", "test", new ArrayList<String>());
+        Agent agent = new Agent("test", "test", "test","test.txt","aerty", new ArrayList<String>());
         String item = "lampe";
         agent.addItemToAgent(item);
         assertEquals(agent.getItemList().get(0), item);
