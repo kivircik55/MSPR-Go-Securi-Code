@@ -35,7 +35,7 @@ public class Agent{
         this.firstName = firstName;
         this.role = role;
         this.login = firstName.toLowerCase().charAt(0) + lastName.toLowerCase();
-        this.agentPicturePath = "absolutePathToFile"+this.login;
+        this.agentPicturePath = "/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/" + this.login + ".jpg";
         this.password = password;
         this.itemList = itemList;
     }
@@ -205,7 +205,7 @@ public class Agent{
                     for (String listItem : this.itemList) {
                         items.append("<li>").append(equipmentList.get(listItem)).append("<input type=\"checkbox\" class=\"chk\"></li>");
                     }
-                    templateFile = templateFile.replace("$agentItems", items.toString()).replace("$agentLogin.jpg", this.agentPicturePath);
+                    templateFile = templateFile.replace("$agentItems", items.toString()).replace("$agentPicture", this.agentPicturePath);
                     Files.writeString(path,templateFile);
                     //System.out.println(templateFile);
                     System.out.println(this.login+".html has been created successfully !");
