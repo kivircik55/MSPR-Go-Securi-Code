@@ -22,10 +22,8 @@ public class ListAgentsMapToAndroidThread implements Runnable {
             Document doc = Jsoup.connect(path).get();
 
             Element Agents = doc.select("#repo-content-pjax-container > div > div.Box.mt-3.position-relative > div.Box-body.p-0.blob-wrapper.data.type-text.gist-border-0 > div > table > tbody").first();
-            //System.out.println(Agents.text());
 
             //Element title = doc.select("td#LC2").first();
-            //System.out.println(title.text());
             agentsTab = Agents.text().split(" ");
             for (String a : agentsTab)
                 AgentsList.add(a);
