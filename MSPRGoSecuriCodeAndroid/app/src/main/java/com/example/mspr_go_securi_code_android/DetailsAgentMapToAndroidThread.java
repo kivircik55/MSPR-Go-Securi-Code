@@ -25,29 +25,6 @@ import java.util.List;
 
 public class DetailsAgentMapToAndroidThread implements Runnable{
 
-    //public static String AgentRecup(String AgentUsername){
-    //    String myData = "";
-    //    File myExternalFile = new File("C:\\Users\\tlepo\\Documents\\GitHub\\MSPR-Go-Securi\\"+AgentUsername+".txt");
-    //    try {
-    //        FileInputStream fis = new FileInputStream(myExternalFile);
-    //        DataInputStream in = new DataInputStream(fis);
-    //        BufferedReader br = new BufferedReader(new InputStreamReader(in));
-//
-    //        String strLine;
-    //        while ((strLine = br.readLine()) != null) {
-    //            myData = myData + strLine + "\n";
-    //        }
-    //        br.close();
-    //        in.close();
-    //        fis.close();
-    //    } catch (IOException e)
-    //    {
-    //        e.printStackTrace();
-    //    }
-    //    System.out.println(myData);
-    //    return myData;
-    //}
-
     public static String AgentUsername;
     public static Agent Agent;
     private static int i = 0;
@@ -104,20 +81,9 @@ public class DetailsAgentMapToAndroidThread implements Runnable{
     }
 
     public static String getPathImage() {
-        String pathImage = "https://github.com/kivircik55/MSPR-Go-Securi/blob/main/cberthier.jpg" + AgentUsername +".jpg";
+        String pathImage = "https://github.com/kivircik55/MSPR-Go-Securi/raw/main/" + AgentUsername +".jpg";
         System.out.println(pathImage);
         return pathImage;
     }
 
-    public static Drawable LoadImageFromWebOperations() {
-        try {
-            InputStream is = (InputStream) new URL(getPathImage()).getContent();
-            Drawable d = Drawable.createFromStream(is, "src name");
-            return d;
-        } catch (Exception e) {
-            System.out.println("aa");
-            System.out.println(e);
-            return null;
-        }
-    }
 }

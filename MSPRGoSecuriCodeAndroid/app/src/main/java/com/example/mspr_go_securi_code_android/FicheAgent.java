@@ -1,15 +1,24 @@
 package com.example.mspr_go_securi_code_android;
-import static com.example.mspr_go_securi_code_android.DetailsAgentMapToAndroidThread.LoadImageFromWebOperations;
+
+import static com.example.mspr_go_securi_code_android.DetailsAgentMapToAndroidThread.getPathImage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 public class FicheAgent extends AppCompatActivity {
@@ -48,7 +57,13 @@ public class FicheAgent extends AppCompatActivity {
 
         fullName.setText(agent.getFirstName() + " " + agent.getLastName());
         role.setText(agent.getRole());
-        imageView.setImageDrawable(LoadImageFromWebOperations());
+
+        //Glide supports fetching, decoding, and displaying images or videos.
+        Glide.with(this)
+                .load(getPathImage())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(imageView);
 
         List<String> list = agent.getItemList();
 
