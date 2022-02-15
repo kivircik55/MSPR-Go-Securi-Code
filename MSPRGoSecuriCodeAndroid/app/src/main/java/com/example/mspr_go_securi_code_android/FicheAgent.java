@@ -26,9 +26,7 @@ public class FicheAgent extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        Agent agent = (Agent)intent.getSerializableExtra("agent");
-        String AgentFirstname = agent.getFirstName();
-        String AgentUsername = AgentFirstname.charAt(0) + agent.getLastName();
+        String AgentUsername = (String)intent.getSerializableExtra("AgentUsername");
         //Appelle de la fonction
 
 
