@@ -12,6 +12,7 @@ public class StaffList {
      * @return
      * @throws IOException
      */
+    
 
     public static List<String> parseStaffFromFile() throws IOException {
         Path fileName = Path.of("C:/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/staff.txt" );
