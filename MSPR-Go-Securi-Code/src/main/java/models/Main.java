@@ -18,7 +18,7 @@ public class Main{
         map.put(liste.get(1), "Talkie Walkie");
         map.put(liste.get(2), "Mousqueton");
 
-        Agent agent = new Agent("toto", "tata", "gardien", "azerty", liste);
+        Agent agent = new Agent("toto", "tata", "gardien", "toto", "azerty", liste);
 
         System.out.println(agent.toString());
         agent.generateAgentFile(map);
