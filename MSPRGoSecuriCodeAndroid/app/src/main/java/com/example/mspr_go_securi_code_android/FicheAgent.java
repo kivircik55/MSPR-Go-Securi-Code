@@ -25,10 +25,15 @@ public class FicheAgent extends AppCompatActivity {
         itemList = (ListView)findViewById(R.id.listAgent);
 
         Intent intent = getIntent();
-        Agent agent = (Agent)intent.getSerializableExtra("agent");
 
-        fullName.setText(agent.getFirstName().toString() + " " + agent.getLastName().toString());
-        role.setText(agent.getRole().toString());
+        Agent agent = (Agent)intent.getSerializableExtra("agent");
+        String AgentFirstname = agent.getFirstName();
+        String AgentUsername = AgentFirstname.charAt(0) + agent.getLastName();
+        //Appelle de la fonction
+
+
+        fullName.setText(agent.getFirstName() + " " + agent.getLastName());
+        role.setText(agent.getRole());
 
         List<String> list = agent.getItemList();
 
