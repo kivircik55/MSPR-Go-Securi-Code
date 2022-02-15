@@ -29,17 +29,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //ArrayList<String> a = MapListAgent();
-        //System.out.println(a);
 
         ListView listAgent = (ListView)findViewById(R.id.listAgent);
-        //Agent a1 = new Agent("Berthier", "Corinne", "Surveillance entrepôt", "pmNd1ldFE7WTk", Arrays.asList(new String[]{"kit", "lampe", "lacrymo"}));
-        //Agent a2 = new Agent("Lepoivre", "Thibault", "Chef d'equipe", "pmNd1ldFE7WTk", Arrays.asList(new String[]{"brassard, Brassard de sécurité", "talky Talkies walkies", "lampe Lampe Torche", "kit Kit oreillette", "taser Tasers"}));
-        //Agent a3 = new Agent("Splauding", "Henri", "Agent spécial", "pmNd1ldFE7WTk", Arrays.asList(new String[]{"kit", "lampe", "lacrymo", "cyno", "Bandeau agent cynophile"}));
-        //ArrayList<Agent> agents = new ArrayList<Agent>();
-        //agents.add(a1);
-        //agents.add(a2);
-        //agents.add(a3);
 
         ArrayAdapter<String> arrayAdapter
             = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1 , agents);

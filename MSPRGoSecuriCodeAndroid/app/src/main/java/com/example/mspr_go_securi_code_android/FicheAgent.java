@@ -1,31 +1,23 @@
 package com.example.mspr_go_securi_code_android;
-
-import static com.example.mspr_go_securi_code_android.FileMapAndroid.AgentRecup;
+import static com.example.mspr_go_securi_code_android.DetailsAgentMapToAndroidThread.LoadImageFromWebOperations;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 
 public class FicheAgent extends AppCompatActivity {
 
     TextView fullName, role;
     ListView itemList;
-
+    ImageView imageView;
+    Agent agent = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +27,28 @@ public class FicheAgent extends AppCompatActivity {
         fullName = findViewById(R.id.textFullName);
         role = findViewById(R.id.textRole);
         itemList = (ListView)findViewById(R.id.listAgent);
+        imageView = (ImageView)findViewById(R.id.imageView);
+
 
         Intent intent = getIntent();
 
-        String AgentUsername = (String)intent.getSerializableExtra("AgentUsername");
         //Appelle de la fonction
-        String Tonton = AgentRecup("cberthier");
+        DetailsAgentMapToAndroidThread.AgentUsername = (String)intent.getSerializableExtra("AgentUsername");
+        DetailsAgentMapToAndroidThread f = new DetailsAgentMapToAndroidThread();
+
+        Thread thread = new Thread(f);
+        thread.start();
+
+        try {
+            thread.join();
+            agent = DetailsAgentMapToAndroidThread.Agent;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         fullName.setText(agent.getFirstName() + " " + agent.getLastName());
         role.setText(agent.getRole());
+        imageView.setImageDrawable(LoadImageFromWebOperations());
 
         List<String> list = agent.getItemList();
 

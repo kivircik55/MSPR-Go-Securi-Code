@@ -15,6 +15,7 @@ public class Agent implements Serializable {
     private String password;
     private List<String> itemList;
 
+
     /**
      * Constructor of the class to implement a new Agent object.
      *
@@ -24,6 +25,7 @@ public class Agent implements Serializable {
      * @param password  Password of the agent.
      * @param itemList  List of the item hold by the agent.
      */
+
     public Agent(String lastName, String firstName, String role, String password, List<String> itemList) {
         this.lastName = lastName;
         this.firstName = firstName;
