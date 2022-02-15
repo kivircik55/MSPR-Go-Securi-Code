@@ -22,6 +22,11 @@ public class StaffList {
             return list;
     }
 
+    /**
+     * print the staff list for testing
+     * @throws IOException
+     */
+
     public void printStaffList() throws IOException {
         List<String> list = parseStaffFromFile();
             for (String print:list) {
