@@ -35,7 +35,7 @@ public class Agent{
         this.firstName = firstName;
         this.role = role;
         this.login = firstName.toLowerCase().charAt(0) + lastName.toLowerCase();
-        this.agentPicturePath = "/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/" + this.login + ".jpg";
+        this.agentPicturePath = "/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/" + this.login.replace(" ","") + ".jpg";
         this.password = password;
         this.itemList = itemList;
     }
