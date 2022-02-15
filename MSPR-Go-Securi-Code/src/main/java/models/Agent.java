@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -32,7 +33,7 @@ public class Agent{
         this.lastName = lastName;
         this.firstName = firstName;
         this.role = role;
-        this.login = firstName.charAt(0) + lastName;
+        this.login = firstName.toLowerCase().charAt(0) + lastName.toLowerCase();
         this.password = password;
         this.itemList = itemList;
     }
