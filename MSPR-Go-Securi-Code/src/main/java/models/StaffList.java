@@ -1,4 +1,7 @@
 package models;
+import javax.swing.*;
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +24,36 @@ public class StaffList {
         Collections.addAll(list, fileString);
             return list;
     }
+
+    /**
+     * generat index.html
+     * @param list
+     */
+
+    public static void generateAgentsList(List <String> list ) {
+        String templateFile="";
+        try {
+            templateFile = Files.readString(Paths.get("src/main/java/models/template_index_file.html"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        try {
+            File index = new File("./index.html");
+            Path path = Path.of("index.html");
+            index.createNewFile();
+            StringBuilder items = new StringBuilder();
+            for (int i = 0; i<list.size() ;i++) {
+                String listItem = list.get(i);
+                items.append("<li><a href=\""+ listItem +".html\">"+ listItem +"</a></li>");
+            }
+            templateFile = templateFile.replace("$agentList", items);
+            Files.writeString(path,templateFile);
+            System.out.println("index.html has been created successfully !");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * print the staff list for testing
