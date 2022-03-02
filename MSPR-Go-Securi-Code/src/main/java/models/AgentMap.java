@@ -7,6 +7,12 @@ import java.util.HashMap;
 
 public class AgentMap {
 
+    /**
+     * Parse and deals with the agent list in a more readable format
+     * @return
+     * @throws IOException
+     */
+
     public static HashMap<String, String> agentMap() throws IOException {
         Path fileName = Path.of("C:\\Users\\tlepo\\Documents\\GitHub\\MSPR-Go-Securi\\staff.txt" );
         String[] fileString = Files.readString(fileName).split("\\r?\\n");
