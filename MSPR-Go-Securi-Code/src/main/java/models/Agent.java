@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -205,6 +206,18 @@ public class Agent{
      */
     public String toString(){
         return "Agent : "+ this.lastName + " "+ this.firstName+ "with login : "+ this.login+ " is "+this.role;
+    }
+
+    /**
+     * This method will write on the .htpasswd file and thread have to wait to write into it.
+     */
+    public synchronized void addingAgentToHtpasswd(){
+        Path path  = Path.of("~/pathToHtpasswd");
+        try {
+            Files.writeString(path,this.login + ":" + this.hash);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
