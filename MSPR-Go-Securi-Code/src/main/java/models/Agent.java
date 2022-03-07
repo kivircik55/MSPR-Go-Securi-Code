@@ -14,7 +14,7 @@ public class Agent{
     private String lastName;
     private String firstName;
     private String role;
-    private String agentPicturePath;
+    private final String agentPicturePath;
     private String login;
     private String password;
     private List<String> itemList;
