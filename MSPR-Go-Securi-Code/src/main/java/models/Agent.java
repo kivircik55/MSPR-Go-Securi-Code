@@ -1,9 +1,14 @@
 package models;
 
+import org.apache.commons.codec.binary.Base64;
+
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +21,7 @@ public class Agent{
     private String role;
     private final String agentPicturePath;
     private String login;
-    private String password;
+    private String hash;
     private List<String> itemList;
 
     /**
@@ -34,8 +39,36 @@ public class Agent{
         this.role = role;
         this.login = firstName.toLowerCase().charAt(0) + lastName.toLowerCase();
         this.agentPicturePath = "/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/" + this.login.replace(" ","") + ".jpg";
-        this.password = password;
+        this.hash = this.passwordToSha1(password);
         this.itemList = itemList;
+    }
+
+    /**
+     * This method will hash a password and return it into a String with the SHA-1 algorithm.
+     * @param password Plain text of the password.
+     * @return A String which is the hashed password with SHA-1.
+     */
+    private String passwordToSha1(String password){
+        MessageDigest messageDigest = null;
+        try {
+            //Getting the instance of the SHA-1 algorithm.
+            messageDigest = MessageDigest.getInstance("SHA-1");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        //Converting into bytes the password encoded in UTF-8.
+        byte[] bytes = password.getBytes(StandardCharsets.UTF_8);
+        assert messageDigest != null;
+        //Updating the digest of the bytes.
+        messageDigest.update(bytes);
+        //Performing the hash computation in doing final operations.
+        byte[] digest = messageDigest.digest();
+        //Initializing the hash format for the htpasswd.
+        String hash = "{SHA}";
+        //Encoding the hash bytes into String
+        hash += Base64.encodeBase64String(digest);
+        //Returning the hash at the good format
+        return hash;
     }
 
     /**
@@ -115,17 +148,17 @@ public class Agent{
      *
      * @return The password of the agent on a String.
      */
-    public String getPassword() {
-        return password;
+    public String getHash() {
+        return hash;
     }
 
     /**
      * Sets the password of the agent.
      *
-     * @param password Take in parameter a String which represent the password of the agent.
+     * @param hash Take in parameter a String which represent the password of the agent.
      */
-    public void setPassword(String password) {
-        this.password = password;
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     /**
@@ -205,7 +238,6 @@ public class Agent{
                     }
                     templateFile = templateFile.replace("$agentItems", items.toString()).replace("$agentPicture", this.agentPicturePath);
                     Files.writeString(path,templateFile);
-                    //System.out.println(templateFile);
                     System.out.println(this.login+".html has been created successfully !");
                 } else {
                     Files.writeString(path,"<p>Aucun équipement n'a été attribué à l'agent !</p>");
