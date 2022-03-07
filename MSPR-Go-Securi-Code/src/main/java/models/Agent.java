@@ -1,7 +1,5 @@
 package models;
 
-import org.apache.commons.codec.binary.Base64;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -9,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -66,7 +65,7 @@ public class Agent{
         //Initializing the hash format for the htpasswd.
         String hash = "{SHA}";
         //Encoding the hash bytes into String
-        hash += Base64.encodeBase64String(digest);
+        hash += Base64.getEncoder().encodeToString(digest);
         //Returning the hash at the good format
         return hash;
     }
