@@ -14,15 +14,15 @@ public class StaffDetail {
      * @throws IOException
      */
     public static boolean agentDetail (List stafflist, HashMap<String,String> equipmentMap) throws IOException {
-    for (int i = 0; i < stafflist.size(); i++){
-        Object row = stafflist.get(i);
-        Path fileName = Path.of("C:/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/".concat((String) row).concat(".txt"));
-        agentCreation(fileName, (String) row, equipmentMap);
-    }
+        for (int i = 0; i < stafflist.size(); i++){
+            Object row = stafflist.get(i);
+            Path fileName = Path.of("C:/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/".concat((String) row).concat(".txt"));
+            agentCreation(i+1,fileName, (String) row, equipmentMap);
+        }
     return true;
     }
 
-    public static void agentCreation(Path path, String login, HashMap<String,String> equipmentMap) throws IOException {
+    public static void agentCreation(int id, Path path, String login, HashMap<String,String> equipmentMap) throws IOException {
         String[] fileString = Files.readString(path).split("\\r?\\n");
         List<String> list = new ArrayList<>();
         Collections.addAll(list, fileString);
@@ -33,10 +33,15 @@ public class StaffDetail {
                 equipment.add(row);
             }
         }
-       Agent agent = new Agent(list.get(0), list.get(1), list.get(2),list.get(3), equipment);
+        Agent agent = new Agent(list.get(0), list.get(1), list.get(2),list.get(3), equipment);
         agent.setLogin(login);
-        System.out.println("olii "+login);
+
+        AgentThread agentThread = new AgentThread(id, equipmentMap, agent);
+        Thread thread = new Thread(agentThread);
+        thread.start();
+        
+        /*System.out.println("olii "+login);
         System.out.println("tokoro "+agent.getLogin());
-        agent.generateAgentFile(equipmentMap);
+        agent.generateAgentFile(equipmentMap);*/
     }
 }
