@@ -16,7 +16,7 @@ public class Main{
         }
 
         try {
-            List staffList = StaffList.parseStaffFromFile();
+            List<String> staffList = StaffList.parseStaffFromFile();
             StaffDetail.agentDetail(staffList,equipmentMap);
             StaffList.generateAgentsList(staffList);
         } catch (IOException e) {

@@ -39,7 +39,7 @@ public class StaffDetail {
         AgentThread agentThread = new AgentThread(id, equipmentMap, agent);
         Thread thread = new Thread(agentThread);
         thread.start();
-        
+
         /*System.out.println("olii "+login);
         System.out.println("tokoro "+agent.getLogin());
         agent.generateAgentFile(equipmentMap);*/
