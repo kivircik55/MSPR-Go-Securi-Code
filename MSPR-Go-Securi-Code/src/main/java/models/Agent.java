@@ -5,9 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import org.apache.commons.lang3.SystemUtils;
 
 /**
  * This class represent an agent by his name and his items.
