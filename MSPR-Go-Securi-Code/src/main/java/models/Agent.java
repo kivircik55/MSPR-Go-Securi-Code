@@ -40,7 +40,7 @@ public class Agent{
         this.firstName = firstName;
         this.role = role;
         this.login = firstName.toLowerCase().charAt(0) + lastName.toLowerCase();
-        this.agentPicturePath = "/var/www/html/" + this.login.replace(" ","") + ".jpg";
+        this.agentPicturePath = "./" + this.login.replace(" ","") + ".jpg";
         this.hash = this.passwordToSha1(password);
         this.itemList = itemList;
     }
