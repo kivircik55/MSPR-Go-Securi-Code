@@ -216,7 +216,7 @@ public class Agent{
         try {
             //Files.writeString(path,this.login + ":" + this.hash);
             Files.writeString(
-                    Path.of(System.getProperty("java.io.tmpdir"),"/var/www/html/.htpasswd"),
+                    path,
                     this.login + ":" + this.hash + System.lineSeparator(),
                     CREATE, APPEND
             );
