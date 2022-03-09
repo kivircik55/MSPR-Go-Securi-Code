@@ -14,7 +14,7 @@ public class AgentMap {
      */
 
     public static HashMap<String, String> agentMap() throws IOException {
-        Path fileName = Path.of("C:\\Users\\tlepo\\Documents\\GitHub\\MSPR-Go-Securi\\staff.txt" );
+        Path fileName = Path.of("/home/thibault/Documents/MSPR-Go-Securi-Text/MSPR-Go-Securi/staff.txt" );
         String[] fileString = Files.readString(fileName).split("\\r?\\n");
         HashMap<String, String> map = new HashMap<>();
         for (String s : fileString) {

@@ -13,7 +13,7 @@ public class EquipmentMap {
      */
 
     public static HashMap<String, String> parseEquipmentFromFile() throws IOException {
-        Path fileName = Path.of("C:/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/list.txt" );
+        Path fileName = Path.of("/home/thibault/Documents/MSPR-Go-Securi-Text/MSPR-Go-Securi/list.txt" );
         String[] fileString = Files.readString(fileName).split("\\r?\\n");
         HashMap<String, String> map = new HashMap<>();
 

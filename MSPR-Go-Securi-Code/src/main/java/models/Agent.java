@@ -37,7 +37,7 @@ public class Agent{
         this.firstName = firstName;
         this.role = role;
         this.login = firstName.toLowerCase().charAt(0) + lastName.toLowerCase();
-        this.agentPicturePath = "/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/" + this.login.replace(" ","") + ".jpg";
+        this.agentPicturePath = "/home/thibault/Documents/MSPR-Go-Securi-Text/MSPR-Go-Securi/" + this.login.replace(" ","") + ".jpg";
         this.hash = this.passwordToSha1(password);
         this.itemList = itemList;
     }
@@ -211,7 +211,7 @@ public class Agent{
      * This method will write on the .htpasswd file and thread have to wait to write into it.
      */
     public synchronized void addingAgentToHtpasswd(){
-        Path path  = Path.of("~/pathToHtpasswd");
+        Path path  = Path.of("/var/www/html/go-securi/site/.htpasswd");
         try {
             Files.writeString(path,this.login + ":" + this.hash);
         } catch (IOException e) {
@@ -228,14 +228,16 @@ public class Agent{
     public void generateAgentFile(Map<String, String> equipmentList){
         String templateFile="";
         try {
-                templateFile = Files.readString(Paths.get("src/main/java/models/template_agent_file.html"));
+            //Reading the template file of an agent.
+            templateFile = Files.readString(Paths.get("/home/thibault/Documents/templates/template_agent_file.html"));
         }catch (IOException e){
             e.printStackTrace();
         }
 
         try {
-            File agentFile = new File("./"+this.login + ".html");
-            Path path = Path.of(this.login+".html");
+            //Creating the agent file with html format
+            File agentFile = new File("/var/www/html/go-securi/site/"+this.login + ".html");
+            Path path = Path.of("/var/www/html/go-securi/site/"+this.login+".html");
 
             agentFile.createNewFile();
             templateFile = templateFile.replace("$agentName", this.firstName + " "+ this.lastName)

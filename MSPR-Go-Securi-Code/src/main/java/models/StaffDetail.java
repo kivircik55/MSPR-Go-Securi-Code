@@ -16,7 +16,7 @@ public class StaffDetail {
     public static boolean agentDetail (List stafflist, HashMap<String,String> equipmentMap) throws IOException {
         for (int i = 0; i < stafflist.size(); i++){
             Object row = stafflist.get(i);
-            Path fileName = Path.of("C:/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/".concat((String) row).concat(".txt"));
+            Path fileName = Path.of("/home/thibault/Documents/MSPR-Go-Securi-Text/MSPR-Go-Securi/".concat((String) row).concat(".txt"));
             agentCreation(i+1,fileName, (String) row, equipmentMap);
         }
     return true;
@@ -39,6 +39,11 @@ public class StaffDetail {
         AgentThread agentThread = new AgentThread(id, equipmentMap, agent);
         Thread thread = new Thread(agentThread);
         thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         /*System.out.println("olii "+login);
         System.out.println("tokoro "+agent.getLogin());

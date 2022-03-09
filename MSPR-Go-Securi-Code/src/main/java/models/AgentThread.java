@@ -35,6 +35,7 @@ public class AgentThread implements Runnable{
             System.out.println("The specified agent "+ this.agent.toString()+" has not been created cause of null.");
         }else{
             this.agent.generateAgentFile(this.inventoryFileMap);
+            this.agent.addingAgentToHtpasswd();
             System.out.println("Thread #"+threadId+" has created the agent file : "+ this.agent.getLogin());
         }
 

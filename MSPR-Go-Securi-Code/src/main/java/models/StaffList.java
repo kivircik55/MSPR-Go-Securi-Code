@@ -1,5 +1,5 @@
 package models;
-import javax.swing.*;
+
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class StaffList {
      */
 
     public static List<String> parseStaffFromFile() throws IOException {
-        Path fileName = Path.of("C:/Users/Olivier/Documents/GitHub/Diamond_Aloha/MSPR-Go-Securi/staff.txt" );
+        Path fileName = Path.of("/home/thibault/Documents/MSPR-Go-Securi-Text/MSPR-Go-Securi/staff.txt" );
         String[] fileString = Files.readString(fileName).split("\\r?\\n");
         List<String> list = new ArrayList<>();
         Collections.addAll(list, fileString);
@@ -33,13 +33,13 @@ public class StaffList {
     public static void generateAgentsList(List <String> list ) {
         String templateFile="";
         try {
-            templateFile = Files.readString(Paths.get("src/main/java/models/template_index_file.html"));
+            templateFile = Files.readString(Paths.get("/home/thibault/Documents/templates/template_index_file.html"));
         }catch (IOException e){
             e.printStackTrace();
         }
         try {
-            File index = new File("./index.html");
-            Path path = Path.of("index.html");
+            File index = new File("/var/www/html/go-securi/site/index.html");
+            Path path = Path.of("/var/www/html/go-securi/site/index.html");
             index.createNewFile();
             StringBuilder items = new StringBuilder();
             for (int i = 0; i<list.size() ;i++) {
