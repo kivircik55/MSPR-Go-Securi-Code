@@ -1,4 +1,4 @@
-
+package models;
 import java.util.Map;
 //import org.apache.commons.codec.digest.Crypt;
 
