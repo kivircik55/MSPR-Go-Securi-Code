@@ -9,6 +9,9 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
+import static java.nio.file.StandardOpenOption.APPEND;
+import static java.nio.file.StandardOpenOption.CREATE;
+
 /**
  * This class represent an agent by his name and his items.
  */
@@ -211,7 +214,12 @@ public class Agent{
     public synchronized void addingAgentToHtpasswd(){
         Path path  = Path.of("/var/www/html/.htpasswd");
         try {
-            Files.writeString(path,this.login + ":" + this.hash);
+            //Files.writeString(path,this.login + ":" + this.hash);
+            Files.writeString(
+                    Path.of(System.getProperty("java.io.tmpdir"),"/var/www/html/.htpasswd"),
+                    this.login + ":" + this.hash + System.lineSeparator(),
+                    CREATE, APPEND
+            );
         } catch (IOException e) {
             e.printStackTrace();
         }
