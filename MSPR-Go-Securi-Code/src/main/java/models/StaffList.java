@@ -37,8 +37,8 @@ public class StaffList {
             e.printStackTrace();
         }
         try {
-            File index = new File("/var/www/html/go-securi/site/index.html");
-            Path path = Path.of("/var/www/html/go-securi/site/index.html");
+            File index = new File("/var/www/html/index.html");
+            Path path = Path.of("/var/www/html/index.html");
             index.createNewFile();
             StringBuilder items = new StringBuilder();
             for (int i = 0; i<list.size() ;i++) {

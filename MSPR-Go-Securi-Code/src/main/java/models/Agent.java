@@ -209,7 +209,7 @@ public class Agent{
      * This method will write on the .htpasswd file and thread have to wait to write into it.
      */
     public synchronized void addingAgentToHtpasswd(){
-        Path path  = Path.of("/var/www/html/go-securi/site/.htpasswd");
+        Path path  = Path.of("/var/www/html/.htpasswd");
         try {
             Files.writeString(path,this.login + ":" + this.hash);
         } catch (IOException e) {
@@ -234,8 +234,8 @@ public class Agent{
 
         try {
             //Creating the agent file with html format
-            File agentFile = new File("/var/www/html/go-securi/site/"+this.login + ".html");
-            Path path = Path.of("/var/www/html/go-securi/site/"+this.login+".html");
+            File agentFile = new File("/var/www/html/"+this.login + ".html");
+            Path path = Path.of("/var/www/html/"+this.login+".html");
 
             agentFile.createNewFile();
             templateFile = templateFile.replace("$agentName", this.firstName + " "+ this.lastName)
