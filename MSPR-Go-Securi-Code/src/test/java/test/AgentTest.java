@@ -1,9 +1,13 @@
 package test;
 
 import models.Agent;
+import models.AgentMap;
+import models.EquipmentMap;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,5 +38,17 @@ public class AgentTest {
         String hash2 = agent1.getHash();
 
         assertEquals(hash, hash2);
+    }
+
+    @Test
+    void agentMapNotNull() throws IOException {
+        HashMap<String, String> agmap = AgentMap.agentMap();
+        assertNotNull(agmap);
+    }
+
+    @Test
+    void equipmentMapNotNull() throws IOException{
+        HashMap<String,String> equmap = EquipmentMap.parseEquipmentFromFile();
+        assertNotNull(equmap);
     }
 }
