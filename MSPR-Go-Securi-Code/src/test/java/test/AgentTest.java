@@ -23,7 +23,11 @@ public class AgentTest {
     }
 
     @Test
-    void generateAgentFile() {
+    void passwordToSha1TestNotNull() {
+        List<String> list = null;
+        Agent  agent = new Agent("toto", "test","test","password", list);
+        String hash = agent.getHash();
+        assertNotNull(hash);
     }
 
     /**
