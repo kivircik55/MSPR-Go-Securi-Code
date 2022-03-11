@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,7 +35,7 @@ public class AgentTest {
      * This test will test that two hash with the same password ar the same;
      */
     @Test
-    void passwordToSha1TestTrue(){
+    void passwordToSha1TestEquals(){
         List<String> list = null;
         Agent  agent = new Agent("toto", "test","test","password", list);
         String hash = agent.getHash();
@@ -42,6 +43,28 @@ public class AgentTest {
         String hash2 = agent1.getHash();
 
         assertEquals(hash, hash2);
+    }
+
+    @Test
+    void passwordToSha1TestETrue(){
+        List<String> list = null;
+        Agent  agent = new Agent("toto", "test","test","password", list);
+        String hash = agent.getHash();
+        Agent  agent1 = new Agent("tata", "titi","test","password", list);
+        String hash2 = agent1.getHash();
+
+        assertTrue(hash.equals(hash2));
+    }
+
+    @Test
+    void passwordToSha1TestFalse(){
+        List<String> list = null;
+        Agent  agent = new Agent("toto", "test","test","password", list);
+        String hash = agent.getHash();
+        Agent  agent1 = new Agent("tata", "titi","test","cke,ck,c", list);
+        String hash2 = agent1.getHash();
+
+        assertFalse(Objects.equals(hash, hash2));
     }
 
     @Test
